@@ -1,0 +1,29 @@
+#login-buttons {
+  padding: 10px 15px;
+  line-height: 20px;
+  #login-dropdown-list {
+    left: initial;
+    right: 1px;
+    .login-close-text {
+      float: right;
+      text-decoration: none;
+    }
+  }
+  .login-link-text {
+    text-decoration: none;
+  }
+}
+
+.navbar-collapse.in {
+  overflow: visible !important;
+  #login-dropdown-list {
+    left: 0px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  #login-buttons {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "generator-angular-meteor": {
+    "filters": {
+      "coffee": true,
+      "jade": true,
+      "scss": true,
+      "pagination": true,
+      "framework": "bootstrap",
+      "bower": true,
+      "auth": true,
+      "oauth": true,
+      "googleAuth": true,
+      "facebookAuth": true,
+      "twitterAuth": true
+    },
+    "appname": "ats"
+  }
+}
