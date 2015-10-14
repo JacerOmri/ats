@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module 'atsApp'
-.controller 'CompanyDetailCtrl', ($scope, $stateParams, $meteor) ->
-  $scope.company = $scope.$meteorObject Companies, $stateParams.companyId
+.controller 'CompanyDetailCtrl', ($scope, $stateParams, $meteor, $state) ->
+  $scope.company = $scope.$meteorObject Companies, $stateParams.companyId, false
   $scope.$meteorSubscribe('companies')
   
   $scope.save = () ->
@@ -10,6 +10,7 @@ angular.module 'atsApp'
       $scope.company.save().then(
         (numberOfDocs) ->
           console.log 'save successful, docs affected ', numberOfDocs
+          $state.go 'companies-list'
         (error) ->
           console.log 'save error ', error
       )
