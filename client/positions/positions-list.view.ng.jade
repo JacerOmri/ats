@@ -1,0 +1,29 @@
+.positions-list.container
+  h1 Positions
+  form(ng-submit='save()', name='form', novalidate='', id='add-position')
+    p.input-group
+      input.form-control(type='text', placeholder='Name', ng-model='newPosition.name')
+      //- ui-select(ng-model='newPosition.company', theme="bootstrap")
+      //-   ui-select-match(placeholder="Select company...") {{$item}}
+      //-   ui-select-choices(repeat="company in companies | filter:$select.search")
+      select.form-control(ng-model='newPosition.company',ng-options='item._id as item.name for item in companies')
+
+      span.input-group-btn
+        input.btn.btn-primary(type='submit', value='Add')
+  .panel.panel-default
+    .panel-body
+      .input-group.pull-right.col-md-3.col-sm-12
+        input.form-control(type='search', ng-model='search', placeholder='Search')
+        .dropdown.input-group-btn(dropdown='', on-toggle='toggled(open)')
+          button.btn.btn-primary.dropdown-toggle(dropdown-toggle='') {{ orderProperty==='1' ? 'Ascending' : 'Descending' }}
+            span.caret
+          ul.dropdown-menu(role='menu')
+            li(ng-click="orderProperty='1'") Ascending
+            li(ng-click="orderProperty='-1'") Descending
+      ul.nav.nav-tabs.nav-stacked.col-md-9.col-sm-12
+        li(dir-paginate='position in positions | itemsPerPage: perPage', total-items='positionsCount.count',  current-page='page')
+          p
+            a(href='/positions/{{position._id}}') {{ position.name }} at {{ getCompanyNameById(position.company).name }}
+            button.btn(ng-click='remove(position)') &times;
+      dir-pagination-controls.col-md-12(on-page-change='pageChanged(newPageNumber)')
+  p Total number of positions: {{positionsCount.count}}

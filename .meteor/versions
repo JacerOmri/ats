@@ -10,6 +10,7 @@ angular@1.0.2
 angular:angular@1.4.7
 angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
+angularui:ui-select@0.12.0
 angularutils:pagination@0.9.0
 autoupdate@1.2.3
 babel-compiler@5.8.24_1
