@@ -1,0 +1,24 @@
+.companies-list.container
+  h1 Companies
+  form(ng-submit='save()', name='form', novalidate='')
+    p.input-group
+      input.form-control(type='text', placeholder='Name', ng-model='newCompany.name')
+      span.input-group-btn
+        input.btn.btn-primary(type='submit', value='Add')
+  .panel.panel-default
+    .panel-body
+      .input-group.pull-right.col-md-3.col-sm-12
+        input.form-control(type='search', ng-model='search', placeholder='Search')
+        .dropdown.input-group-btn(dropdown='', on-toggle='toggled(open)')
+          button.btn.btn-primary.dropdown-toggle(dropdown-toggle='') {{ orderProperty==='1' ? 'Ascending' : 'Descending' }}
+            span.caret
+          ul.dropdown-menu(role='menu')
+            li(ng-click="orderProperty='1'") Ascending
+            li(ng-click="orderProperty='-1'") Descending
+      ul.nav.nav-tabs.nav-stacked.col-md-9.col-sm-12
+        li(dir-paginate='company in companies | itemsPerPage: perPage', total-items='companiesCount.count',  current-page='page')
+          p
+            a(href='/companies/{{company._id}}') {{ company.name }}
+            button.btn(ng-click='remove(company)') &times;
+      dir-pagination-controls.col-md-12(on-page-change='pageChanged(newPageNumber)')
+  p Total number of companies: {{companiesCount.count}}
